@@ -8,8 +8,17 @@ int main()
 {
 	Student st(20, "Vasya");
 	//st.setAge(2000000);
+	st.print(); //print(st)
+	st.setMark(10);
+	st.setMark(10);
+	st.setMark(10);
+	st.setMark(10);
+	st.printMark();
+	st.~Student();
+	st.setMark(10);
+	st.setMark(10);
+	st.printMark();
 	st.print();
-
 
 	Student* st1 = new Student[2];
 	st1[0].print();
@@ -19,8 +28,8 @@ int main()
 
 	st1[0].print();
 
+	delete[] st1;
 
-	f3 = f1.add(f2);
 
 	system("pause");
 }
