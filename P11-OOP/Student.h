@@ -6,11 +6,13 @@ using namespace std;
 
 class Student
 {
-
+	const int id;
 	int age;
 	char* name;
 	int* mark;
 	size_t sizeMark;
+	static int lastID;
+	static int count;
 
 	void foo()
 	{
@@ -19,37 +21,24 @@ class Student
 
 public:
 
-	Student()
+	Student() : id{++lastID }, age(0), mark{nullptr}, sizeMark{0}, name{nullptr}
 	{
 		cout << "Constr" << endl;
-		mark = nullptr;
-		sizeMark = 0;
-		name = nullptr;
-		age = 0;
 		setName("No name");
-		/*name = new char[strlen("No name") + 1];
-		strcpy_s(name, strlen("No name") + 1, "No name");*/
+		count++;
 	}
 
-	Student(int age, const char* n)
+	Student(int age, const char* n): id(++lastID), age(age), mark{ nullptr }, sizeMark{ 0 }, name{ nullptr }
 	{
-		mark = nullptr;
-		sizeMark = 0;
 		setAge(age);
 		setName(n);
-		/*name = new char[strlen(n) + 1];
-		strcpy_s(name, strlen(n) + 1, n);*/
 		cout << "Constr 2 param" << endl;
-
-		/*age = age;
-		this->age = 9;
-		this->foo();
-
-		return *this;*/
+		count++;
 	}
 
 	~Student()
 	{
+		count--;
 		delete[] mark;
 		delete name;
 		cout << "Destructor" << endl;
@@ -61,7 +50,7 @@ public:
 		push_back_Array(mark, sizeMark, m);
 	}
 
-	void printMark()
+	void printMark() const
 	{
 		for (size_t i = 0; i < sizeMark; i++)
 		{
@@ -77,12 +66,12 @@ public:
 			age = a;
 	}
 
-	int getAge()
+	int getAge() const
 	{
 		return age;
 	}
 
-	const char* getName()
+	const char* getName() const
 	{
 		return name;
 	}
@@ -94,13 +83,26 @@ public:
 		strcpy_s(name, strlen(n) + 1, n);
 	}
 
-	void print();
+	void print() const;
+
+	static int getCount()
+	{
+		return count;
+	}
+
+	static int getLastID()
+	{
+		return lastID;
+	}
 
 };
 
+int Student::lastID = 0;
+int Student::count = 0;
 
-/*inline*/ void Student::print()
+
+/*inline*/ void Student::print() const
 {
-	cout << "Name: " << ((name) ? name : "No name") << ", Age: " << age << endl;
+	cout << "ID: " << id << ", Name: " << ((name) ? name : "No name") << ", Age: " << age << endl;
 }
 
