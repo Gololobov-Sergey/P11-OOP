@@ -3,12 +3,44 @@
 #include"Student.h"
 #include"Area.h"
 #include"Array.h"
+#include"PhoneBook.h"
 
 using namespace std;
+
+void fooo(Student st)
+{
+	st.print();
+}
 
 
 int main()
 {
+
+	///// 05.12.2022  ////////
+
+
+	PhoneBook* b = new PhoneBook;
+	b->add("Vasya", 123456789);
+	Abonent* a = new Abonent("Petya", 987654321);
+	b->add(a);
+	b->print();
+	delete b;
+
+	//Student st(20, "Vasya");
+	//st.print();
+
+	///////1
+	//Student st1(st);
+	//st1.print();
+
+
+	/////2
+	/////fooo(st);
+
+	//st.print();
+
+
+
 	/*cout << "Count: " << Student::getCount() << endl;
 	cout << "LastID: " << Student::getLastID() << endl;
 
@@ -35,9 +67,9 @@ int main()
 	st.print();*/
 	
 
-	const Array a(10);
+	/*const Array a(10);
 	a.setRandom();
-	a.print();
+	a.print();*/
 
 
 	//Area::Rectangle_OnDiagonalAndAngle(12.2f, 'a');

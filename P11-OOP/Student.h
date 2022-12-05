@@ -36,12 +36,28 @@ public:
 		count++;
 	}
 
+	Student(const Student& obj) : id{ ++lastID }
+	{
+		name = nullptr;
+		setAge(obj.age);
+		setName(obj.name);
+		sizeMark = obj.sizeMark;
+		mark = new int[obj.sizeMark];
+		for (size_t i = 0; i < obj.sizeMark; i++)
+		{
+			mark[i] = obj.mark[i];
+		}
+		count++;
+		cout << "Constructor copy" << endl;
+	}
+
 	~Student()
 	{
+		cout << "Destructor" << endl;
 		count--;
 		delete[] mark;
 		delete name;
-		cout << "Destructor" << endl;
+		
 	}
 
 
