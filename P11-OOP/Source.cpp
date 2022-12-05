@@ -4,12 +4,13 @@
 #include"Area.h"
 #include"Array.h"
 #include"PhoneBook.h"
+#include"String.h"
 
 using namespace std;
 
-void fooo(Student st)
+void fooo(Array a)
 {
-	st.print();
+	a.print();
 }
 
 
@@ -19,12 +20,31 @@ int main()
 	///// 05.12.2022  ////////
 
 
-	PhoneBook* b = new PhoneBook;
-	b->add("Vasya", 123456789);
+	String str;
+	str.print();
+
+	string st = "dfgh";
+	int b = 0;
+
+
+
+	/*const Array a(10);
+	a.setRandom();
+	a.print();
+	fooo(a);
+	a.print();*/
+
+	
+
+	/*PhoneBook b;
+	b.add("Vasya", 123456789);
 	Abonent* a = new Abonent("Petya", 987654321);
-	b->add(a);
-	b->print();
-	delete b;
+	b.add(a);
+	b.print();
+
+
+	PhoneBook b1(b);
+	b1.print();*/
 
 	//Student st(20, "Vasya");
 	//st.print();

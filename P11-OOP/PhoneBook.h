@@ -69,6 +69,16 @@ public:
 
     }
 
+    PhoneBook(const PhoneBook& obj)
+    {
+        size = obj.size;
+        telephones = new Abonent* [size];
+        for (size_t i = 0; i < size; i++)
+        {
+            telephones[i] = new Abonent(obj.telephones[i]->getInfo(), obj.telephones[i]->getNumber());
+        }
+    }
+
     ~PhoneBook()
     {
         for (size_t i = 0; i < size; i++)

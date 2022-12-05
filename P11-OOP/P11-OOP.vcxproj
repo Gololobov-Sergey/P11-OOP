@@ -134,6 +134,7 @@
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="PhoneBook.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="Student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

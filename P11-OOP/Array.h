@@ -21,6 +21,16 @@ public:
 		array = new int[size] {0};
 	}
 
+	Array(const Array& obj)
+	{
+		size = obj.size;
+		array = new int[size];
+		for (size_t i = 0; i < size; i++)
+		{
+			array[i] = obj.array[i];
+		}
+	}
+
 	~Array()
 	{
 		delete[] array;
