@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void fooo(Array a)
+void fooo(String a)
 {
 	a.print();
 }
@@ -20,11 +20,25 @@ int main()
 	///// 05.12.2022  ////////
 
 
-	String str;
-	str.print();
+	/*String str;
+	str.print();*/
 
-	string st = "dfgh";
-	int b = 0;
+	/*String st1(20);
+	st1.print();
+
+	String st2("sdfghjkl");
+	st2.print();
+
+	fooo(st2);*/
+	//fooo(50);
+
+
+
+
+
+
+	/*string st = "dfgh";
+	int b = 0;*/
 
 
 
@@ -61,15 +75,17 @@ int main()
 
 
 
-	/*cout << "Count: " << Student::getCount() << endl;
-	cout << "LastID: " << Student::getLastID() << endl;
+	//cout << "Count: " << Student::getCount() << endl;
+	//cout << "LastID: " << Student::getLastID() << endl;
 
 	{
-		Student st(20, "Vasya");
-		cout << "Count: " << Student::getCount() << endl;
-		cout << "LastID: " << Student::getLastID() << endl;
+		//Student st(20, "Vasya");
+		//st.print();
+		//cout << "Count: " << Student::getCount() << endl;
+		//cout << "LastID: " << Student::getLastID() << endl;
 		{
-			Student st1(20, "Vasyasss");
+			Student st1;
+			st1.print();
 			cout << "Count: " << Student::getCount() << endl;
 			cout << "LastID: " << Student::getLastID() << endl;
 		}
@@ -78,9 +94,11 @@ int main()
 	}
 	cout << "Count: " << Student::getCount() << endl;
 	cout << "LastID: " << Student::getLastID() << endl;
+
 	Student st(20, "Vasya");
+	st.print();
 	cout << "Count: " << Student::getCount() << endl;
-	cout << "LastID: " << Student::getLastID() << endl;*/
+	cout << "LastID: " << Student::getLastID() << endl;
 
 
 	/*Student st(20, "Vasya");

@@ -10,8 +10,8 @@ class Array
 	int size;
 
 public:
-	Array() :array{ nullptr }, size{ 0 } {}
-	Array(int size) : array{ nullptr }, size{ size } 
+	Array() : array{ nullptr }, size{ 0 } {}
+	explicit Array(int size) : array{ nullptr }, size{ size } 
 	{
 		if (size <= 0)
 		{

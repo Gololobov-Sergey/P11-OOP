@@ -10,9 +10,9 @@ class String
 public:
 	String();
 
-	String(size_t size);
+	explicit String(size_t size);
 
-	String(const char* str);
+	explicit String(const char* str);
 
 	String(const String& obj);
 
@@ -22,7 +22,7 @@ public:
 
 	void set(const char* str);
 
-	size_t length();
+	size_t length() const;
 
 	void print();
 
@@ -30,41 +30,65 @@ public:
 
 String::String()
 {
-	str = new char[81];
-	for (size_t i = 0; i < 81; i++)
+	str = new char[(size_t)81];
+	for (size_t i = 0; i < (size_t)81; i++)
 	{
 		str[i] = ' ';
 	}
-	str[81] = '\0';
+	str[(size_t)80] = '\0';
 }
 
 String::String(size_t size)
 {
-
+	str = new char[size + 1];
+	for (size_t i = 0; i < size + 1; i++)
+	{
+		str[i] = ' ';
+	}
+	str[size] = '\0';
 }
 
-String::String(const char* str)
+String::String(const char* str) : str(nullptr)
 {
+	set(str);
 }
 
 String::String(const String& obj)
 {
+	size_t size = obj.length();
+	str = new char[size + 1];
+	for (size_t i = 0; i < size; i++)
+	{
+		str[i] = obj.str[i];
+	}
 }
 
 String::~String()
 {
-
+	delete str;
 }
+
 
 void String::set()
 {
+	char name[1024];
+	cin.getline(name, 1024);
+	set(name);
 }
 
-void String::set(const char* str)
+void String::set(const char* name)
 {
+	delete str;
+	size_t length = 0;
+	while (name[length++]);
+	str = new char[length];
+	for (size_t i = 0; i < length; i++)
+	{
+		str[i] = name[i];
+	}
 }
 
-size_t String::length()
+size_t String::length() const
 {
 	size_t length = 0;
 	while (str[length++]);

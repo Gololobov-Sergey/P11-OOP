@@ -14,26 +14,19 @@ class Student
 	static int lastID;
 	static int count;
 
-	void foo()
-	{
-		
-	}
-
 public:
 
-	Student() : id{++lastID }, age(0), mark{nullptr}, sizeMark{0}, name{nullptr}
+	Student() : Student(0, "no name") 
 	{
-		cout << "Constr" << endl;
-		setName("No name");
-		count++;
+		cout << "Constructor 0" << endl;
 	}
 
-	Student(int age, const char* n): id(++lastID), age(age), mark{ nullptr }, sizeMark{ 0 }, name{ nullptr }
+	Student(int age, const char* n) : id{ ++lastID }, age{0}, mark{nullptr}, sizeMark{0}
 	{
 		setAge(age);
 		setName(n);
-		cout << "Constr 2 param" << endl;
 		count++;
+		cout << "Constructor 2" << endl;
 	}
 
 	Student(const Student& obj) : id{ ++lastID }
@@ -53,7 +46,7 @@ public:
 
 	~Student()
 	{
-		cout << "Destructor" << endl;
+		/*cout << "Destructor" << endl;*/
 		count--;
 		delete[] mark;
 		delete name;
