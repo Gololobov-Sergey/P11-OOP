@@ -18,7 +18,7 @@ public:
 
 	Student() : Student(0, "no name") 
 	{
-		cout << "Constructor 0" << endl;
+		/*cout << "Constructor 0" << endl;*/
 	}
 
 	Student(int age, const char* n) : id{ ++lastID }, age{0}, mark{nullptr}, sizeMark{0}
@@ -26,7 +26,7 @@ public:
 		setAge(age);
 		setName(n);
 		count++;
-		cout << "Constructor 2" << endl;
+		/*cout << "Constructor 2" << endl;*/
 	}
 
 	Student(const Student& obj) : id{ ++lastID }

@@ -21,16 +21,16 @@ int main()
 
 
 	/*String str;
-	str.print();*/
+	str.print();
 
-	/*String st1(20);
+	String st1(-20);
 	st1.print();
 
 	String st2("sdfghjkl");
 	st2.print();
 
-	fooo(st2);*/
-	//fooo(50);
+	fooo(st2);
+	fooo(50);*/
 
 
 
@@ -42,12 +42,13 @@ int main()
 
 
 
-	/*const Array a(10);
+	Array a(20);
 	a.setRandom();
 	a.print();
-	fooo(a);
+	/*a.resize(15);
 	a.print();*/
-
+	a.sort(noEvenFirstAsc);
+	a.print();
 	
 
 	/*PhoneBook b;
@@ -75,14 +76,14 @@ int main()
 
 
 
-	//cout << "Count: " << Student::getCount() << endl;
-	//cout << "LastID: " << Student::getLastID() << endl;
+	/*cout << "Count: " << Student::getCount() << endl;
+	cout << "LastID: " << Student::getLastID() << endl;
 
 	{
-		//Student st(20, "Vasya");
-		//st.print();
-		//cout << "Count: " << Student::getCount() << endl;
-		//cout << "LastID: " << Student::getLastID() << endl;
+		Student st(20, "Vasya");
+		st.print();
+		cout << "Count: " << Student::getCount() << endl;
+		cout << "LastID: " << Student::getLastID() << endl;
 		{
 			Student st1;
 			st1.print();
@@ -98,7 +99,7 @@ int main()
 	Student st(20, "Vasya");
 	st.print();
 	cout << "Count: " << Student::getCount() << endl;
-	cout << "LastID: " << Student::getLastID() << endl;
+	cout << "LastID: " << Student::getLastID() << endl;*/
 
 
 	/*Student st(20, "Vasya");

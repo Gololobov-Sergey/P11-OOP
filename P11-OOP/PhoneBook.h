@@ -119,3 +119,17 @@ public:
         push_back_Array(telephones, size, a);
     }
 };
+
+
+
+class Time
+{
+    int hour;
+    int min;
+    int sec;
+public:
+    Time() : Time(0) { }
+    Time(int sec) : Time(0, sec) {  }
+    Time(int min, int sec) : Time(0, min, sec) { }
+    Time(int hour, int min, int sec) { this->hour = hour; this->min = min; this->sec = sec; }
+};

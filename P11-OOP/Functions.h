@@ -50,3 +50,22 @@ T* push_back_Array(T*& a, size_t& size, const T& value)
 	a = temp;
 	return temp;
 }
+
+bool asc(int a, int b)
+{
+	return a > b;
+}
+
+bool desc(int a, int b)
+{
+	return a < b;
+}
+
+bool noEvenFirstAsc(int a, int b)
+{
+	if (a % 2 == 1 && b % 2 == 0)
+		return false;
+	if (a % 2 == 0 && b % 2 == 1)
+		return true;
+	return asc(a, b);
+}

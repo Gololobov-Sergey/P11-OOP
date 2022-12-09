@@ -28,14 +28,8 @@ public:
 
 };
 
-String::String()
+String::String() : String(80)
 {
-	str = new char[(size_t)81];
-	for (size_t i = 0; i < (size_t)81; i++)
-	{
-		str[i] = ' ';
-	}
-	str[(size_t)80] = '\0';
 }
 
 String::String(size_t size)
