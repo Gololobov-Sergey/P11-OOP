@@ -30,6 +30,8 @@ public:
 	int at(size_t index) const;
 
 	void sort(bool (*method)(int, int)) const;
+
+	friend void printArrayInStars(Array a);
 };
 
 Array::Array() : array{ nullptr }, size{ 0 } {}
@@ -107,4 +109,11 @@ void Array::sort(bool(*method)(int, int)) const
 				swap(array[j], array[j + 1]);
 		}
 	}
+}
+
+
+void printArrayInStars(Array a)
+{
+	cout << "=================" << endl;
+	a.print();
 }

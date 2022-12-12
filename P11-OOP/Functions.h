@@ -51,6 +51,27 @@ T* push_back_Array(T*& a, size_t& size, const T& value)
 	return temp;
 }
 
+template<class T>
+T* remove_Array(T*& a, size_t& size, size_t pos)
+{
+	if (pos < 0 || pos > size - 1)
+		return a;
+	T* temp = new T[size - 1];
+	for (size_t i = 0; i < pos; i++)
+	{
+		temp[i] = a[i];
+	}
+	for (size_t i = pos + 1; i < size; i++)
+	{
+		temp[i - 1] = a[i];
+	}
+	delete[] a;
+	size--;
+	a = temp;
+	return temp;
+}
+
+
 bool asc(int a, int b)
 {
 	return a > b;

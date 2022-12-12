@@ -5,10 +5,11 @@
 #include"Array.h"
 #include"PhoneBook.h"
 #include"String.h"
+#include"House.h"
 
 using namespace std;
 
-void fooo(String a)
+void fooo(House a)
 {
 	a.print();
 }
@@ -16,6 +17,34 @@ void fooo(String a)
 
 int main()
 {
+
+	///// 12.12.2022 ////
+
+
+
+
+
+	//House h;
+	//flat* f1 = new flat();
+	//flat* f2 = new flat();
+	//f1->setSpace(60);
+	//f2->setSpace(30);
+	//f1->setNumber(330);
+	//f2->setNumber(50);
+	//Person* p1 = new Person("Vasya Pupkin", 30);
+	//Person* p2 = new Person("Pupkin Vasya", 20);
+	//Person* p3 = new Person("Vasya Pupkin", 30);
+	//Person* p4 = new Person("Pupkin Vasya", 20);
+	//f1->addPerson(p1);
+	//f1->addPerson(p2);
+	//f2->addPerson(p3);
+	//f2->addPerson(p4);
+	//h.addFlat(f1);
+	//h.addFlat(f2);
+	//fooo(h);
+	////f1->printFull();
+	////f2->printFull();
+
 
 	///// 05.12.2022  ////////
 
@@ -43,12 +72,14 @@ int main()
 
 
 	Array a(20);
-	a.setRandom();
-	a.print();
-	/*a.resize(15);
-	a.print();*/
-	a.sort(noEvenFirstAsc);
-	a.print();
+	printArrayInStars(a);
+
+	//a.setRandom();
+	//a.print();
+	///*a.resize(15);
+	//a.print();*/
+	//a.sort(noEvenFirstAsc);
+	//a.print();
 	
 
 	/*PhoneBook b;
