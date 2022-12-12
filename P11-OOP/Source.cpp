@@ -6,6 +6,7 @@
 #include"PhoneBook.h"
 #include"String.h"
 #include"House.h"
+#include"Friend.h"
 
 using namespace std;
 
@@ -20,8 +21,15 @@ int main()
 
 	///// 12.12.2022 ////
 
+	Array a(20);
+	Visualisation vis;
+	vis.printArrayInStars(a);
 
 
+	/*Temperature t(10);
+	Humidity h(90);
+
+	WeatherInformer(t, h);*/
 
 
 	//House h;
@@ -71,8 +79,8 @@ int main()
 
 
 
-	Array a(20);
-	printArrayInStars(a);
+	/*Array a(20);
+	printArrayInStars(a);*/
 
 	//a.setRandom();
 	//a.print();

@@ -4,6 +4,23 @@
 
 using namespace std;
 
+class Array;
+
+class Visualisation
+{
+	bool info = false;
+
+public:
+	void printArrayInStars(Array a);
+
+	//void print(Array a)
+	//{
+	//	//a.array = nullptr;
+	//}
+
+	friend class Array;
+};
+
 
 class Array
 {
@@ -31,7 +48,14 @@ public:
 
 	void sort(bool (*method)(int, int)) const;
 
-	friend void printArrayInStars(Array a);
+	//friend void printArrayInStars(Array a);
+
+	//friend class Visualisation;
+
+	friend void Visualisation::printArrayInStars(Array a);
+
+	void mmm();
+
 };
 
 Array::Array() : array{ nullptr }, size{ 0 } {}
@@ -112,8 +136,17 @@ void Array::sort(bool(*method)(int, int)) const
 }
 
 
-void printArrayInStars(Array a)
+
+void Visualisation::printArrayInStars(Array a)
 {
 	cout << "=================" << endl;
-	a.print();
+	cout << a.size << endl;
+}
+
+
+
+void Array::mmm()
+{
+	Visualisation visual;
+	visual.info = true;
 }
