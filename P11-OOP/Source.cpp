@@ -7,10 +7,11 @@
 #include"String.h"
 #include"House.h"
 #include"Friend.h"
+#include"Fraction.h"
 
 using namespace std;
 
-void fooo(House a)
+void fooo(String a)
 {
 	a.print();
 }
@@ -18,12 +19,63 @@ void fooo(House a)
 
 int main()
 {
-
+	//cout.setf(ios::showpos);
 	///// 12.12.2022 ////
 
-	Array a(20);
+	// ::  ?:  sizeof  . *
+	//  +  -  ++  -- 
+	// =, +, -, *, /, %, +=, -=, *=, /=, %=
+	// !
+	// >, <, ==, !=, >=, <=, &&, ||
+
+
+	Fraction f1(1, 2);
+	Fraction f2(3, 5);
+	//Fraction f3 = f1.sum(f2);
+	Fraction f3 = f1;
+	(f1++).print();
+	//(++f1).print();
+	//f3.print();
+	f1.print();
+
+	//cout << 123 << endl;
+	//cout << -123 << endl;
+
+	Array a(10);
+	a.setRandom();
+	a.print();
+	Array b(20);
+
+	Array c = a + b;
+
+	a += b;
+
+	//b = a; // b.operator=(a);
+
+	//a.print();
+
+
+	/*String s1("asdfghjik");
+	String s2;
+	char buff[20] = "fghgfddfg";
+	s2 = "ertyuytre";
+	s2 = s1;
+	s2 = buff;
+	s2.print();
+	s2.set("mama");
+	fooo(s2);
+	s2.print();*/
+	
+	
+
+	/*Array a(20);
 	Visualisation vis;
-	vis.printArrayInStars(a);
+	vis.printArrayInStars(a);*/
+
+	/*A a(20);
+	a.getA();
+
+	A::B b(10);*/
 
 
 	/*Temperature t(10);

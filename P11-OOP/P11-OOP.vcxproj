@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="Fraction.h" />
     <ClInclude Include="Friend.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Area.h" />

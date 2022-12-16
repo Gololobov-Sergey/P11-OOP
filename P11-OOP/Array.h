@@ -36,6 +36,8 @@ public:
 
 	~Array();
 
+	Array& operator=(const Array& obj);
+
 	void setRandom(int min, int max) const;
 
 	void print() const;
@@ -55,6 +57,12 @@ public:
 	friend void Visualisation::printArrayInStars(Array a);
 
 	void mmm();
+
+	// TODO
+
+	Array operator+(const Array& a);
+	void operator+=(const Array& a);
+
 
 };
 
@@ -80,6 +88,23 @@ Array::Array(const Array& obj)
 Array::~Array()
 {
 	delete[] array;
+}
+
+Array& Array::operator=(const Array& obj)
+{
+	if (this == &obj)
+		return *this;
+
+	delete[] array;
+
+	size = obj.size;
+	array = new int[size];
+	for (size_t i = 0; i < size; i++)
+	{
+		array[i] = obj.array[i];
+	}
+
+	return *this;
 }
 
 

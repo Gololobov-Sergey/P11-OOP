@@ -5,18 +5,20 @@ using namespace std;
 
 class String
 {
-	char* str;
+	char* str = nullptr;
 
 public:
 	String();
 
 	explicit String(size_t size);
 
-	explicit String(const char* str);
+	String(const char* str);
 
 	String(const String& obj);
 
 	~String();
+
+	String& operator=(const String& obj);
 
 	void set();
 
@@ -26,11 +28,15 @@ public:
 
 	void print();
 
+	//TODO
+
+	String operator+(const String& a);
+	void operator+=(const String& a);
+
 };
 
-String::String() : String(80)
-{
-}
+
+String::String() : String(80) { }
 
 String::String(size_t size)
 {
@@ -42,24 +48,27 @@ String::String(size_t size)
 	str[size] = '\0';
 }
 
-String::String(const char* str) : str(nullptr)
+String::String(const char* str)
 {
 	set(str);
 }
 
 String::String(const String& obj)
 {
-	size_t size = obj.length();
-	str = new char[size + 1];
-	for (size_t i = 0; i < size; i++)
-	{
-		str[i] = obj.str[i];
-	}
+	set(obj.str);
 }
 
 String::~String()
 {
 	delete str;
+}
+
+String& String::operator=(const String& obj)
+{
+	if (this == &obj)
+		return *this;
+	set(obj.str);
+	return *this;
 }
 
 

@@ -1,0 +1,328 @@
+#pragma once
+#include <iostream>
+
+using namespace std;
+
+unsigned int NOD(unsigned int a, unsigned int b) {
+    if (a % b == 0)
+        return b;
+    if (b % a == 0)
+        return a;
+    if (a > b)
+        return NOD(a % b, b);
+    return NOD(a, b % a);
+}
+
+class Fraction
+{
+private:
+    long c;
+    long numerator;
+    long denominator;
+public:
+
+    Fraction()
+    {
+        c = 0;
+        numerator = 0;
+        denominator = 1;
+    }
+
+    Fraction(int af, int bf, int cf) : c(af), numerator(bf), denominator(cf)
+    {
+        /*if (af < 0)
+        {
+            c = 0;
+        }
+        else
+        {
+            c = af;
+        }
+        if (bf <= 0)
+        {
+            numerator = 1;
+        }
+        else
+        {
+            numerator = bf;
+        }
+        if (cf <= 0)
+        {
+            denominator = 0;
+        }
+        else
+        {
+            denominator = cf;
+        }*/
+    }
+    Fraction(int bf, int cf) : c(0), numerator(bf), denominator(cf)
+    {
+       /* c = 0;
+        if (bf <= 0)
+        {
+            numerator = 1;
+        }
+        else
+        {
+            numerator = bf;
+        }
+        if (cf <= 0)
+        {
+            denominator = 0;
+        }
+        else
+        {
+            denominator = cf;
+        }*/
+    }
+
+    void set_whole(int a)
+    {
+        if (a < 0)
+        {
+            c = 0;
+        }
+        else
+        {
+            c = a;
+        }
+    }
+
+    void set_numerator(int a)
+    {
+        if (a <= 0)
+        {
+            numerator = 1;
+        }
+        else
+        {
+            numerator = a;
+        }
+    }
+
+    void set_denominator(int a)
+    {
+        if (a <= 0)
+        {
+            denominator = 1;
+        }
+        else
+        {
+            denominator = a;
+        }
+    }
+
+    long get_whole()
+    {
+        return c;
+    }
+
+    long get_numerator()
+    {
+        return numerator;
+    }
+
+    long get_denominator()
+    {
+        return denominator;
+    }
+
+    void print()
+    {
+        if (c == 0 and numerator == 0)
+        {
+            cout << 0;
+            return;
+        }
+        if (numerator == 0)
+        {
+            cout << c;
+            return;
+        }
+        if (c == 0)
+        {
+            cout << numerator << endl;
+            cout << denominator << endl;
+            cout << endl;
+        }
+        else
+        {
+            cout << "  " << numerator << endl;
+            cout << c << " " << denominator << endl;
+            cout << endl;
+        }
+    }
+
+    Fraction whole_destroy()
+    {
+        if (c == 0)
+        {
+            return *this;
+        }
+        numerator = (c * denominator) + numerator;
+        c = 0;
+    }
+
+    Fraction improperand_to_proper()
+    {
+        if (numerator < denominator)
+        {
+            return *this;
+        }
+        c = numerator / denominator;
+        numerator -= denominator * c;
+    }
+
+    Fraction operator+(Fraction f2)
+    {
+        Fraction res;
+
+        whole_destroy();
+        f2.whole_destroy();
+
+        res.c = 0;
+        res.numerator = numerator * f2.denominator + f2.numerator * denominator;
+        res.denominator = denominator * f2.denominator;
+
+        int a = NOD(res.numerator, res.denominator);
+
+        res.numerator = res.numerator / a;
+        res.denominator = res.denominator / a;
+
+        res.improperand_to_proper();
+
+        return res;
+    }
+
+    Fraction minFraction(Fraction f2)
+    {
+        Fraction res;
+
+        whole_destroy();
+        f2.whole_destroy();
+
+        res.c = 0;
+        res.numerator = numerator * f2.denominator - f2.numerator * denominator;
+        res.denominator = denominator * f2.denominator;
+
+        int a = NOD(res.numerator, res.denominator);
+
+        res.numerator = res.numerator / a;
+        res.denominator = res.denominator / a;
+
+        res.improperand_to_proper();
+
+        return res;
+    }
+
+    Fraction multiFraction(Fraction f2)
+    {
+        Fraction res;
+
+        whole_destroy();
+        f2.whole_destroy();
+
+        res.c = 0;
+        res.numerator = numerator * f2.numerator;
+        res.denominator = denominator * f2.denominator;
+
+        int a = NOD(res.numerator, res.denominator);
+
+        res.numerator = res.numerator / a;
+        res.denominator = res.denominator / a;
+
+        res.improperand_to_proper();
+
+        return res;
+    }
+
+    Fraction divFraction(Fraction f2)
+    {
+        Fraction res;
+
+        whole_destroy();
+        f2.whole_destroy();
+
+        res.c = 0;
+        res.numerator = numerator * f2.denominator;
+        res.denominator = denominator * f2.numerator;
+
+        int a = NOD(res.numerator, res.denominator);
+
+        res.numerator = res.numerator / a;
+        res.denominator = res.denominator / a;
+
+        res.improperand_to_proper();
+
+        return res;
+    }
+
+    Fraction operator-()
+    {
+        return Fraction(-numerator, denominator);
+    }
+
+    Fraction operator+()
+    {
+        return *this;
+    }
+
+    Fraction operator++() // prefix
+    {
+        c += 1;
+        return *this;
+    }
+
+    Fraction operator++(int) // postfix
+    {
+        Fraction res(*this);
+        c += 1;
+        return res;
+    }
+
+    //friend Fraction operator+(Fraction f1, Fraction f2);
+};
+
+
+//Fraction operator+(Fraction f1, Fraction f2)
+//{
+//    Fraction res;
+//
+//    f1.whole_destroy();
+//    f2.whole_destroy();
+//
+//    res.c = 0;
+//    res.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
+//    res.denominator = f1.denominator * f2.denominator;
+//
+//    int a = NOD(res.numerator, res.denominator);
+//
+//    res.numerator = res.numerator / a;
+//    res.denominator = res.denominator / a;
+//
+//    res.improperand_to_proper();
+//
+//    return res;
+//}
+
+
+//Fraction operator+(Fraction f1, Fraction f2)
+//{
+//    Fraction res;
+//
+//    f1.whole_destroy();
+//    f2.whole_destroy();
+//
+//    res.set_whole(0);
+//    res.set_numerator( f1.get_numerator() * f2.get_denominator() + f2.get_numerator() * f1.get_denominator());
+//    res.set_denominator(f1.get_denominator() * f2.get_denominator());
+//
+//    int a = NOD(res.get_numerator(), res.get_denominator());
+//
+//    res.set_numerator(res.get_numerator() / a);
+//    res.set_denominator(res.get_denominator() / a);
+//
+//    res.improperand_to_proper();
+//
+//    return res;
+//}

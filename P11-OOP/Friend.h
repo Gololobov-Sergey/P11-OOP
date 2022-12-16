@@ -33,3 +33,30 @@ void WeatherInformer(Temperature t, Humidity h)
 	cout << "Temp: " << t.temp << " " << char(248) << "C" << endl;
 	cout << "Hum : " << h.humidity << " %" << endl;
 }
+
+
+
+
+class A
+{
+
+public:
+	class B
+	{
+		int b;
+
+	public:
+		B() {}
+		B(int b) : b(b) {}
+		int getB() { return b; }
+	};
+	B b;
+
+	B b1;
+
+
+	A(int a) : b(a) {}
+
+	int getA() { return b.getB(); }
+
+};
