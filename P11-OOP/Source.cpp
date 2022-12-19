@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 
 #include"Student.h"
 #include"Area.h"
@@ -27,28 +28,61 @@ int main()
 	// =, +, -, *, /, %, +=, -=, *=, /=, %=
 	// !
 	// >, <, ==, !=, >=, <=, &&, ||
+	// type
+	// [], (), >>, << 
 
 
-	Fraction f1(1, 2);
-	Fraction f2(3, 5);
-	//Fraction f3 = f1.sum(f2);
-	Fraction f3 = f1;
-	(f1++).print();
-	//(++f1).print();
-	//f3.print();
-	f1.print();
+	//Fraction f1(3, 1, 2);
+	//Fraction f2(1, 5);
+	////Fraction f3 = f1.sum(f2);
+	////Fraction f3 = f1;
+	////(f1++).print();
+	////(++f1).print();
+	////f3.print();
+	//f1.print();
+	//cin >> f1;
 
-	//cout << 123 << endl;
-	//cout << -123 << endl;
+	//ofstream fff("fraction.txt");
+	//fff << f1;
 
-	Array a(10);
-	a.setRandom();
+	//cout << f1 << endl;
+
+	//f1(2, 9);
+
+	//f1[1] = 100;
+
+
+	//float t = f1;
+	//cout << t << endl;
+
+	//if (f1)
+	//{
+	//	cout << "True" << endl;
+	//}
+	//else
+	//{
+	//	cout << "False" << endl;
+	//}
+	////cout << 123 << endl;
+	////cout << -123 << endl;
+
+	//f2 = f1 * 4; // f1.op*(4)
+	//f2 = 4 * f1; // 4.op(f1) !!!???
+
+	Array a(5);
+	cin >> a;
+	//a.setRandom();
+	cout << a << endl;
+	//a[3] = 100;
 	a.print();
-	Array b(20);
+	//cout << a["zero"] << endl;
 
-	Array c = a + b;
 
-	a += b;
+	//Array b(20);
+
+	//Array c = a + b;
+
+	//a += b;
 
 	//b = a; // b.operator=(a);
 

@@ -61,8 +61,16 @@ public:
 	// TODO
 
 	Array operator+(const Array& a);
+
 	void operator+=(const Array& a);
 
+	int& operator[](int index);
+
+	int& operator[](const char* key);
+
+	friend ostream& operator<<(ostream& out, const Array& a);
+
+	friend istream& operator>>(istream& in, Array& a);
 
 };
 
@@ -160,6 +168,57 @@ void Array::sort(bool(*method)(int, int)) const
 	}
 }
 
+int& Array::operator[](int index)
+{
+	return array[index];
+}
+
+int& Array::operator[](const char* key)
+{
+	if (strcmp(key, "zero") == 0)
+		return array[0];
+}
+
+
+Array Array::operator+(const Array& a)
+{
+	Array result(size + a.size);
+
+	for (size_t i = 0; i < size; i++)
+	{
+		result.array[i] = array[i];
+	}
+	for (size_t i = 0; i < a.size; i++)
+	{
+		result.array[size + i] = a.array[i];
+	}
+
+	return result;
+}
+
+
+void Array::operator+=(const Array& a)
+{
+	*this = *this + a;
+}
+
+ostream& operator<<(ostream& out, const Array& a)
+{
+	for (size_t i = 0; i < a.size; i++)
+	{
+		out << a.array[i] << " ";
+	}
+	return out;
+}
+
+istream& operator>>(istream& in, Array& a)
+{
+	for (size_t i = 0; i < a.size; i++)
+	{
+		in >> a.array[i];
+	}
+	return in;
+}
 
 
 void Visualisation::printArrayInStars(Array a)

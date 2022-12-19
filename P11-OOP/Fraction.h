@@ -28,6 +28,11 @@ public:
         denominator = 1;
     }
 
+    Fraction(int c) : c(c)
+    {
+
+    }
+
     Fraction(int af, int bf, int cf) : c(af), numerator(bf), denominator(cf)
     {
         /*if (af < 0)
@@ -173,6 +178,19 @@ public:
         numerator -= denominator * c;
     }
 
+    Fraction operator*(Fraction f2)
+    {
+        return Fraction();
+    }
+
+    Fraction operator*(int f)
+    {
+        return *this * Fraction(f);
+    }
+
+    friend Fraction operator*(int n, Fraction f);
+
+
     Fraction operator+(Fraction f2)
     {
         Fraction res;
@@ -280,9 +298,92 @@ public:
         return res;
     }
 
+    bool operator!()
+    {
+        return numerator == 0;
+    }
+
+    bool operator==(const Fraction& f)
+    {
+        return c == f.c && numerator == f.numerator && denominator == f.denominator;
+    }
+
+    bool operator!=(const Fraction& f)
+    {
+        return !(*this == f);
+    }
+
+    /*bool operator>(const Fraction& f)
+    {
+        return (float)(c * denominator + numerator) / denominator > (float)(f.c * f.denominator + f.numerator) / f.denominator;
+    }
+
+    bool operator<(const Fraction& f)
+    {
+        return (float)(c * denominator + numerator) / denominator < (float)(f.c * f.denominator + f.numerator) / f.denominator;
+    }*/
+
+    auto operator<=>(const Fraction& f)
+    {
+        return (float)(c * denominator + numerator) / denominator <=> (float)(f.c* f.denominator + f.numerator) / f.denominator;
+    }
+
+    operator bool()
+    {
+        return numerator;
+    }
+
+    operator double()
+    {
+        return (double)(c * denominator + numerator) / denominator;
+    }
+
+    operator float()
+    {
+        return (float)(c * denominator + numerator) / denominator;
+    }
+
+    void operator()(int n, int d)
+    {
+        numerator = n;
+        denominator = d;
+    }
+
+    long& operator[](int ind)
+    {
+        if (ind == 0)
+            return c;
+        if (ind == 1)
+            return numerator;
+        if (ind == 2)
+            return denominator;
+    }
+
+    friend ostream& operator<<(ostream& out, const Fraction& f);
+    friend istream& operator>>(istream& in, Fraction& f);
+
     //friend Fraction operator+(Fraction f1, Fraction f2);
 };
 
+
+Fraction operator*(int n, Fraction f)
+{
+    return f * n;
+}
+
+ostream& operator<<(ostream& out, const Fraction& f)
+{
+    if (f.c)
+        out << f.c << ".";
+    out << f.numerator << "/" << f.denominator;
+    return out;
+}
+
+inline istream& operator>>(istream& in, Fraction& f)
+{
+    in >> f.c >> f.numerator >> f.denominator;
+    return in;
+}
 
 //Fraction operator+(Fraction f1, Fraction f2)
 //{
