@@ -9,6 +9,7 @@
 #include"House.h"
 #include"Friend.h"
 #include"Fraction.h"
+#include"Apple.h"
 
 using namespace std;
 
@@ -20,6 +21,19 @@ void fooo(String a)
 
 int main()
 {
+	Apple a1("red", 12);
+	Apple a2("green", 15);
+	Kompot k = a1 + a2;
+	cout << k << endl;
+	Apple a3("yellow", 13);
+	k += a3;
+	cout << k << endl;
+
+	if (k1 > k2)
+	{
+
+	}
+
 	//cout.setf(ios::showpos);
 	///// 12.12.2022 ////
 
@@ -69,12 +83,12 @@ int main()
 	//f2 = f1 * 4; // f1.op*(4)
 	//f2 = 4 * f1; // 4.op(f1) !!!???
 
-	Array a(5);
-	cin >> a;
+	//Array a(5);
+	//cin >> a;
 	//a.setRandom();
-	cout << a << endl;
+	//cout << a << endl;
 	//a[3] = 100;
-	a.print();
+	//a.print();
 	//cout << a["zero"] << endl;
 
 
