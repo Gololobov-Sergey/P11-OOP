@@ -30,8 +30,39 @@ public:
 
 	//TODO
 
-	String operator+(const String& a);
-	void operator+=(const String& a);
+	String operator+(const String& st);
+
+	void operator+=(const String& st);
+
+
+	// TODO2
+
+	void clear();
+
+	String& insert(size_t pos, size_t count, const char symbol);
+	String& insert(size_t pos, const String& st);
+
+	String& erase(size_t pos, size_t count);
+
+	void push_back(const char symbol);
+
+	String& append(const String& st);
+	String& append(const String& st, size_t count);
+
+	int compare(const String& st); // 1 0 -1
+
+	String substr(size_t pos, size_t count);
+
+	int find(const String& st);             //-1 not found
+	int find(const String& st, size_t pos); //-1 not found
+
+	auto operator<=>(const String& st);
+
+	friend ostream& operator<<(ostream& out, const String& st);
+
+	friend istream& operator>>(istream& in, String& st);
+
+	char& operator[](size_t index);
 
 };
 

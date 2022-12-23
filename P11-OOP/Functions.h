@@ -37,7 +37,7 @@ void setArray(T* arr, int size, int min = 0, int max = 9)
 }
 
 template<class T>
-T* push_back_Array(T*& a, size_t& size, const T& value)
+T* push_back_Array(T*& a, size_t& size, const T value)
 {
 	T* temp = new T[size + 1];
 	for (size_t i = 0; i < size; i++)

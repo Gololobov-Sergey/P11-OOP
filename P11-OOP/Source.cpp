@@ -10,6 +10,7 @@
 #include"Friend.h"
 #include"Fraction.h"
 #include"Apple.h"
+#include"var.h"
 
 using namespace std;
 
@@ -21,18 +22,42 @@ void fooo(String a)
 
 int main()
 {
-	Apple a1("red", 12);
+	/*Apple a1("red", 12);
 	Apple a2("green", 15);
-	Kompot k = a1 + a2;
+	Kompot k;
+	k = a1 + a2;
 	cout << k << endl;
-	Apple a3("yellow", 13);
-	k += a3;
-	cout << k << endl;
+	{
+		Apple a3("yellow", 13);
+		k += a3;
+		
+	}
+	cout << k << endl;*/
 
-	if (k1 > k2)
+	/*int t = 9;
+	void* pt = &t;
+	*((int*)pt) = 888;
+	cout << t << endl;*/
+
+	var a = 4;
+	var b = 5;
+	var c = a + b;
+	cout << c << endl;
+
+
+
+	/*String str;
+	String str1;
+	str += str1;
+	str += "tytut";
+
+	string st;
+	cout << st.max_size() << endl;*/
+
+	/*if (k1 > k2)
 	{
 
-	}
+	}*/
 
 	//cout.setf(ios::showpos);
 	///// 12.12.2022 ////
