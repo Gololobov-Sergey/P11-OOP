@@ -39,11 +39,13 @@ int main()
 	*((int*)pt) = 888;
 	cout << t << endl;*/
 
-	var a = 4;
+	/*var a = 4;
 	var b = 5;
 	var c = a + b;
-	cout << c << endl;
+	cout << c << endl;*/
 
+
+	
 
 
 	/*String str;
@@ -94,27 +96,34 @@ int main()
 	//float t = f1;
 	//cout << t << endl;
 
-	//if (f1)
-	//{
-	//	cout << "True" << endl;
-	//}
-	//else
-	//{
-	//	cout << "False" << endl;
-	//}
+	/*if (f1 >= f2)
+	{
+		cout << "True" << endl;
+	}
+	else
+	{
+		cout << "False" << endl;
+	}*/
+
 	////cout << 123 << endl;
 	////cout << -123 << endl;
 
 	//f2 = f1 * 4; // f1.op*(4)
 	//f2 = 4 * f1; // 4.op(f1) !!!???
 
-	//Array a(5);
+	Array<int> a(5);
 	//cin >> a;
-	//a.setRandom();
-	//cout << a << endl;
+	a.setRandom(0, 9);
+	cout << a << endl;
+	Array<int> b(10);
+	b.setRandom(0, 9);
+	cout << b << endl;
+	b = a;
+	cout << b << endl;
 	//a[3] = 100;
 	//a.print();
 	//cout << a["zero"] << endl;
+
 
 
 	//Array b(20);

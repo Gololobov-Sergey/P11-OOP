@@ -4,27 +4,39 @@
 
 using namespace std;
 
+//class Array;
+//
+//class Visualisation
+//{
+//	bool info = false;
+//	
+//
+//public:
+//	void printArrayInStars(Array a);
+//
+//	//void print(Array a)
+//	//{
+//	//	//a.array = nullptr;
+//	//}
+//
+//	friend class Array;
+//};
+
+
+template<class T>
 class Array;
 
-class Visualisation
-{
-	bool info = false;
+template<class T>
+ostream& operator<<(ostream& out, const Array<T>& a);
 
-public:
-	void printArrayInStars(Array a);
-
-	//void print(Array a)
-	//{
-	//	//a.array = nullptr;
-	//}
-
-	friend class Array;
-};
+template<class T>
+istream& operator>>(istream& in, Array<T>& a);
 
 
+template<class T>
 class Array
 {
-	int* array;
+	T* array;
 	size_t size;
 
 public:
@@ -32,13 +44,13 @@ public:
 
 	explicit Array(size_t size);
 
-	Array(const Array& obj);
+	Array(const Array<T>& obj);
 
 	~Array();
 
-	Array& operator=(const Array& obj);
+	Array<T>& operator=(const Array<T>& obj);
 
-	void setRandom(int min, int max) const;
+	void setRandom(T min, T max) const;
 
 	void print() const;
 
@@ -46,59 +58,62 @@ public:
 
 	size_t getSize() const;
 
-	int at(size_t index) const;
+	T at(size_t index) const;
 
-	void sort(bool (*method)(int, int)) const;
+	void sort(bool (*method)(T, T)) const;
 
 	//friend void printArrayInStars(Array a);
 
 	//friend class Visualisation;
 
-	friend void Visualisation::printArrayInStars(Array a);
+	//friend void Visualisation::printArrayInStars(Array a);
 
-	void mmm();
+	//void mmm();
 
 	// TODO
 
-	Array operator+(const Array& a);
+	Array<T> operator+(const Array<T>& a);
 
-	void operator+=(const Array& a);
+	void operator+=(const Array<T>& a);
 
-	int& operator[](int index);
+	T& operator[](int index);
 
-	int& operator[](const char* key);
+	T& operator[](const char* key);
 
-	friend ostream& operator<<(ostream& out, const Array& a);
+	friend ostream& operator<< <T>(ostream& out, const Array& a);
 
-	friend istream& operator>>(istream& in, Array& a);
+	friend istream& operator>> <T>(istream& in, Array& a);
 
 };
 
-Array::Array() : array{ nullptr }, size{ 0 } {}
+template<class T>
+Array<T>::Array() : array{ nullptr }, size{ 0 } {}
 
-
-Array::Array(size_t size) : array{ nullptr }, size{ size }
+template<class T>
+Array<T>::Array(size_t size) : array{ nullptr }, size{ size }
 {
-	array = new int[size] {0};
+	array = new T[size] {0};
 }
 
-
-Array::Array(const Array& obj)
+template<class T>
+Array<T>::Array(const Array& obj)
 {
 	size = obj.size;
-	array = new int[size];
+	array = new T[size];
 	for (size_t i = 0; i < size; i++)
 	{
 		array[i] = obj.array[i];
 	}
 }
 
-Array::~Array()
+template<class T>
+Array<T>::~Array()
 {
 	delete[] array;
 }
 
-Array& Array::operator=(const Array& obj)
+template<class T>
+Array<T>& Array<T>::operator=(const Array& obj)
 {
 	if (this == &obj)
 		return *this;
@@ -106,7 +121,7 @@ Array& Array::operator=(const Array& obj)
 	delete[] array;
 
 	size = obj.size;
-	array = new int[size];
+	array = new T[size];
 	for (size_t i = 0; i < size; i++)
 	{
 		array[i] = obj.array[i];
@@ -115,8 +130,8 @@ Array& Array::operator=(const Array& obj)
 	return *this;
 }
 
-
-void Array::setRandom(int min = 0, int max = 9) const
+template<class T>
+void Array<T>::setRandom(T min, T max) const
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -124,7 +139,8 @@ void Array::setRandom(int min = 0, int max = 9) const
 	}
 }
 
-void Array::print() const
+template<class T>
+void Array<T>::print() const
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -133,9 +149,10 @@ void Array::print() const
 	cout << endl;
 }
 
-void Array::resize(size_t newSize)
+template<class T>
+void Array<T>::resize(size_t newSize)
 {
-	int* newArray = new int[newSize] {0};
+	T* newArray = new T[newSize] {0};
 	for (size_t i = 0; i < ((newSize < size) ? newSize : size); i++)
 	{
 		newArray[i] = array[i];
@@ -145,18 +162,21 @@ void Array::resize(size_t newSize)
 	size = newSize;
 }
 
-size_t Array::getSize() const
+template<class T>
+size_t Array<T>::getSize() const
 {
 	return size;
 }
 
-int Array::at(size_t index) const
+template<class T>
+T Array<T>::at(size_t index) const
 {
 	assert(index < size && "Invalid index");
 	return array[index];
 }
 
-void Array::sort(bool(*method)(int, int)) const
+template<class T>
+void Array<T>::sort(bool(*method)(T, T)) const
 {
 	for (size_t i = 0; i < size - 1; i++)
 	{
@@ -168,19 +188,21 @@ void Array::sort(bool(*method)(int, int)) const
 	}
 }
 
-int& Array::operator[](int index)
+template<class T>
+T& Array<T>::operator[](int index)
 {
 	return array[index];
 }
 
-int& Array::operator[](const char* key)
+template<class T>
+T& Array<T>::operator[](const char* key)
 {
 	if (strcmp(key, "zero") == 0)
 		return array[0];
 }
 
-
-Array Array::operator+(const Array& a)
+template<class T>
+Array<T> Array<T>::operator+(const Array<T>& a)
 {
 	Array result(size + a.size);
 
@@ -196,13 +218,14 @@ Array Array::operator+(const Array& a)
 	return result;
 }
 
-
-void Array::operator+=(const Array& a)
+template<class T>
+void Array<T>::operator+=(const Array<T>& a)
 {
 	*this = *this + a;
 }
 
-ostream& operator<<(ostream& out, const Array& a)
+template<class T>
+ostream& operator<<(ostream& out, const Array<T>& a)
 {
 	for (size_t i = 0; i < a.size; i++)
 	{
@@ -211,7 +234,9 @@ ostream& operator<<(ostream& out, const Array& a)
 	return out;
 }
 
-istream& operator>>(istream& in, Array& a)
+
+template<class T>
+istream& operator>>(istream& in, Array<T>& a)
 {
 	for (size_t i = 0; i < a.size; i++)
 	{
@@ -221,16 +246,16 @@ istream& operator>>(istream& in, Array& a)
 }
 
 
-void Visualisation::printArrayInStars(Array a)
-{
-	cout << "=================" << endl;
-	cout << a.size << endl;
-}
-
-
-
-void Array::mmm()
-{
-	Visualisation visual;
-	visual.info = true;
-}
+//void Visualisation::printArrayInStars(Array a)
+//{
+//	cout << "=================" << endl;
+//	cout << a.size << endl;
+//}
+//
+//
+//
+//void Array::mmm()
+//{
+//	Visualisation visual;
+//	visual.info = true;
+//}

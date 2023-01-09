@@ -323,7 +323,7 @@ public:
         return (float)(c * denominator + numerator) / denominator < (float)(f.c * f.denominator + f.numerator) / f.denominator;
     }*/
 
-    auto operator<=>(const Fraction& f)
+    auto operator<=>(const Fraction& f) const
     {
         return (float)(c * denominator + numerator) / denominator <=> (float)(f.c* f.denominator + f.numerator) / f.denominator;
     }

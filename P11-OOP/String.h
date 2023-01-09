@@ -133,3 +133,12 @@ void String::print()
 {
 	cout << str << endl;
 }
+
+auto String::operator<=>(const String& st)
+{
+	size_t i = 0;
+	while (st.str[i] != '\0')
+	{
+
+	}
+}
