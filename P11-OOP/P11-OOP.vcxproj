@@ -139,6 +139,7 @@
     <ClInclude Include="Area.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="PhoneBook.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="var.h" />

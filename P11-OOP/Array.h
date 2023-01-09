@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<cassert>
+#include"Fraction.h"
 
 using namespace std;
 
@@ -92,7 +93,7 @@ Array<T>::Array() : array{ nullptr }, size{ 0 } {}
 template<class T>
 Array<T>::Array(size_t size) : array{ nullptr }, size{ size }
 {
-	array = new T[size] {0};
+	array = new T[size];
 }
 
 template<class T>
@@ -135,13 +136,32 @@ void Array<T>::setRandom(T min, T max) const
 {
 	for (size_t i = 0; i < size; i++)
 	{
-		array[i] = rand() % (max - min + 1) + min;
+		array[i] = rand() % (int)(max - min + 1) + min;
+	}
+}
+
+template<>
+void Array<double>::setRandom(double min, double max) const
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		array[i] = rand() % (int)(max - min + 1) + min + 0.001;
+	}
+}
+
+template<>
+void Array<Fraction>::setRandom(Fraction min, Fraction max) const
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		array[i] = Fraction(rand() % (max.get_whole() - min.get_whole() + 1) + min.get_whole());
 	}
 }
 
 template<class T>
 void Array<T>::print() const
 {
+	cout << "Array: " << typeid(T).name() << endl;
 	for (size_t i = 0; i < size; i++)
 	{
 		cout << array[i] << " ";
@@ -259,3 +279,17 @@ istream& operator>>(istream& in, Array<T>& a)
 //	Visualisation visual;
 //	visual.info = true;
 //}
+
+
+template<class T, size_t size>
+class StaticArray
+{
+	T data[size];
+
+public:
+	StaticArray()
+	{
+			
+	}
+
+};

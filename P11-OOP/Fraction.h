@@ -28,7 +28,7 @@ public:
         denominator = 1;
     }
 
-    Fraction(int c) : c(c)
+    Fraction(int c) : c(c), numerator(0), denominator(1)
     {
 
     }
@@ -117,17 +117,17 @@ public:
         }
     }
 
-    long get_whole()
+    long get_whole() const
     {
         return c;
     }
 
-    long get_numerator()
+    long get_numerator() const
     {
         return numerator;
     }
 
-    long get_denominator()
+    long get_denominator() const
     {
         return denominator;
     }

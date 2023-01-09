@@ -111,15 +111,25 @@ int main()
 	//f2 = f1 * 4; // f1.op*(4)
 	//f2 = 4 * f1; // 4.op(f1) !!!???
 
-	Array<int> a(5);
+
+	//StaticArray<int, 5> a;
+
+	A<int, double> a(10);
+	cout << a.getA() << endl;
+
+
+	//Array<int> a(5);
 	//cin >> a;
-	a.setRandom(0, 9);
-	cout << a << endl;
-	Array<int> b(10);
+	//a.setRandom(0, 9);
+	//a.print();
+	//cout << a << endl;
+	/*Array<var> b(10);
 	b.setRandom(0, 9);
 	cout << b << endl;
 	b = a;
-	cout << b << endl;
+	cout << b << endl;*/
+
+
 	//a[3] = 100;
 	//a.print();
 	//cout << a["zero"] << endl;

@@ -16,7 +16,7 @@ class var
 public:
 	var() {}
 
-	var(int val) : type(TYPE::INT) 
+	var(int val) : type(TYPE::INT)
 	{
 		value = new int;
 		*(int*)value = val;
@@ -30,7 +30,7 @@ public:
 
 	var(const char* val) : type(TYPE::STRING)
 	{
-		value = new char[strlen(val)+1];
+		value = new char[strlen(val) + 1];
 		strcpy_s((char*)value, strlen(val) + 1, val);
 	}
 
@@ -71,23 +71,56 @@ public:
 	}
 
 	friend ostream& operator<<(ostream& out, const var& var);
+	friend istream& operator>>(istream& in, var& st);
+
 };
 
-ostream& operator<<(ostream& out, const var& var)
+ostream& operator<<(ostream& out, const var& val)
 {
-	switch (var.type)
+	switch (val.type)
 	{
 	case TYPE::NOTYPE:
 		break;
 	case TYPE::INT:
-		out << *(int*)var.value;
+	{
+		out << *(int*)val.value;
 		break;
+	}
 	case TYPE::DOUBLE:
+	{
+		out << *(double*)val.value;
 		break;
+	}
 	case TYPE::STRING:
-		break;
-	default:
+		out << (char*)val.value;
 		break;
 	}
 	return out;
+}
+
+istream& operator>>(istream& in, var& st)
+{
+	switch (st.type)
+	{
+	case TYPE::NOTYPE:
+		break;
+	case TYPE::INT:
+	{
+		in >> *(int*)st.value;
+		break;
+	}
+	case TYPE::DOUBLE:
+	{
+		in >> *(double*)st.value;
+		break;
+	}
+	case TYPE::STRING:
+	{
+		char* name = new char[1024];
+		in.getline(name, 1024);
+		st = name;
+		break;
+	}
+	}
+	return in;
 }

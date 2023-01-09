@@ -36,23 +36,24 @@ void WeatherInformer(Temperature t, Humidity h)
 
 
 
-
+template<class T1, class T2>
 class A
 {
-
+	T1 x;
 public:
+	template<class T2>
 	class B
 	{
-		int b;
+		T2 b;
 
 	public:
 		B() {}
 		B(int b) : b(b) {}
 		int getB() { return b; }
 	};
-	B b;
+	B<T2> b;
 
-	B b1;
+	B<T1> b1;
 
 
 	A(int a) : b(a) {}
